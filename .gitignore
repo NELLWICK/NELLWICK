@@ -39,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# Allow a safe example environment file
+!.env.example
+
+# Private admin workbooks and local exports
+*.xlsx
+*.xls
+*.ods
+/private-admin-exports/
+/backups/
+
+# Private service-account credentials
+*service-account*.json

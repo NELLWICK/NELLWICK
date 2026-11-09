@@ -1,0 +1,112 @@
+/* NELLWICK admin-connected cart and product purchase actions */
+.nw-header__cart {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-self: end;
+  gap: 9px;
+  padding: 0 4px;
+  color: var(--nw-ivory);
+  text-decoration: none;
+  transition: color 180ms ease, transform 180ms ease;
+}
+.nw-header__cart:hover { color: var(--nw-mint); transform: translateY(-1px); }
+.nw-header__cart svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nw-header__cart-label { font-size: .77rem; }
+.nw-header__cart .nw-header__count {
+  display: grid;
+  min-width: 25px;
+  height: 25px;
+  padding: 0 6px;
+  place-items: center;
+  border: 1px solid rgba(168,240,198,.34);
+  border-radius: 999px;
+  color: var(--nw-mint);
+  background: rgba(168,240,198,.07);
+  font-size: .68rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.nw-product-buy-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: 11px;
+  margin-top: 28px;
+}
+.nw-product-buy-now,
+.nw-product-add {
+  display: inline-flex;
+  width: 100%;
+  min-height: 64px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 19px;
+  cursor: pointer;
+  border-radius: 16px;
+  font: inherit;
+  font-size: .89rem;
+  font-weight: 800;
+  letter-spacing: .01em;
+  transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease;
+}
+.nw-product-buy-now {
+  justify-content: space-between;
+  border: 1px solid #c4ffda;
+  color: #071a17;
+  background: linear-gradient(110deg, #c4ffda, #a8f0c6 68%, #93e4b4);
+  box-shadow: 0 10px 28px rgba(168,240,198,.11);
+}
+.nw-product-buy-now span:first-child { font-size: .96rem; }
+.nw-product-buy-now span:last-child { font-size: 1.35rem; }
+.nw-product-buy-now:hover:not(:disabled) {
+  transform: translateY(-3px);
+  background: #d5ffe4;
+  box-shadow: 0 14px 38px rgba(168,240,198,.23), 0 0 25px rgba(168,240,198,.12);
+}
+.nw-product-add {
+  border: 1px solid rgba(168,240,198,.55);
+  color: var(--p-ivory, #e8e8d9);
+  background: rgba(13,40,34,.76);
+}
+.nw-product-add svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: var(--p-mint, #a8f0c6);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nw-product-add:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: var(--p-mint, #a8f0c6);
+  color: #fff;
+  background: rgba(25,70,56,.94);
+}
+.nw-product-buy-now:disabled,
+.nw-product-add:disabled { cursor: not-allowed; opacity: .48; }
+.nw-product-added a { color: var(--p-mint, #a8f0c6); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 900px) {
+  .nw-header__cart { grid-column: 3; grid-row: 1; }
+}
+@media (max-width: 760px) {
+  .nw-product-buy-actions { grid-template-columns: 1fr; gap: 10px; }
+  .nw-product-buy-now,
+  .nw-product-add { min-height: 59px; border-radius: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nw-header__cart,
+  .nw-product-buy-now,
+  .nw-product-add { transition: none !important; }
+}
