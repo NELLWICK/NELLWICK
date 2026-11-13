@@ -101,12 +101,17 @@ export default function CheckoutPage() {
 
       const checkoutUrl = new URL(result.checkoutUrl);
 
-      if (
-        checkoutUrl.protocol !== "https:" ||
-        checkoutUrl.hostname !== "checkout.flutterwave.com"
-      ) {
-        throw new Error("The secure payment link was not valid.");
-      }
+      const allowedCheckoutHosts = new Set([
+  "checkout.flutterwave.com",
+  "checkout-v2.dev-flutterwave.com",
+]);
+
+if (
+  checkoutUrl.protocol !== "https:" ||
+  !allowedCheckoutHosts.has(checkoutUrl.hostname)
+) {
+  throw new Error("The secure payment link was not valid.");
+}
 
       window.location.assign(checkoutUrl.toString());
     } catch (error) {
