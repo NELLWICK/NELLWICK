@@ -12,6 +12,7 @@ function money(value) {
   }).format(Number(value) || 0);
 }
 
+
 export default function CheckoutPage() {
   const {
     items,
