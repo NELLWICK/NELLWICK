@@ -1,4 +1,3 @@
-
 import { randomUUID, timingSafeEqual } from "node:crypto";
 
 function getSupabaseConfig() {
