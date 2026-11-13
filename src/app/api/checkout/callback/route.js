@@ -1,4 +1,3 @@
-
 import { verifyAndConfirmPayment } from "@/lib/server/flutterwave";
 
 function getSiteOrigin() {
