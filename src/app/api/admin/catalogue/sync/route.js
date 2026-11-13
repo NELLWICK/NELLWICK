@@ -1,5 +1,6 @@
 import { timingSafeEqual } from "node:crypto";
 
+
 function sameSecret(left, right) {
   const a = Buffer.from(String(left || ""));
   const b = Buffer.from(String(right || ""));
