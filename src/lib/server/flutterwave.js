@@ -196,12 +196,14 @@ export async function createFlutterwaveCheckout({
     throw new Error("Flutterwave returned an invalid checkout link.");
   }
 
-  if (
-    parsedLink.protocol !== "https:" ||
-    parsedLink.hostname !== "checkout.flutterwave.com"
-  ) {
-    throw new Error("Flutterwave returned an unexpected checkout URL.");
-  }
+if (
+  parsedLink.protocol !== "https:" ||
+  parsedLink.hostname !== "checkout.flutterwave.com"
+) {
+  throw new Error(
+    `Flutterwave returned an unexpected checkout URL. Protocol: ${parsedLink.protocol}, Host: ${parsedLink.hostname || "unknown"}`
+  );
+}
 
   return link;
 }
