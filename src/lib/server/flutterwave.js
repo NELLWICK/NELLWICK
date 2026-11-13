@@ -196,9 +196,19 @@ export async function createFlutterwaveCheckout({
     throw new Error("Flutterwave returned an invalid checkout link.");
   }
 
+const isTestKey = /^FLWSECK_TEST-/i.test(secret);
+
+const allowedHosts = new Set([
+  "checkout.flutterwave.com",
+]);
+
+if (isTestKey) {
+  allowedHosts.add("checkout-v2.dev-flutterwave.com");
+}
+
 if (
   parsedLink.protocol !== "https:" ||
-  parsedLink.hostname !== "checkout.flutterwave.com"
+  !allowedHosts.has(parsedLink.hostname)
 ) {
   throw new Error(
     `Flutterwave returned an unexpected checkout URL. Protocol: ${parsedLink.protocol}, Host: ${parsedLink.hostname || "unknown"}`
