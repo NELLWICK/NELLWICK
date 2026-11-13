@@ -8,6 +8,7 @@ function jsonError(message, status = 400) {
   return Response.json({ ok: false, error: message }, { status });
 }
 
+
 function cleanString(value, maxLength = 300) {
   return typeof value === "string"
     ? value.trim().slice(0, maxLength)
